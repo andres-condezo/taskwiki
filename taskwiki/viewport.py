@@ -89,9 +89,9 @@ class ViewPort(object):
         taskfilter_args = list(constants.DEFAULT_VIEWPORT_VIRTUAL_TAGS)
         if use_presets:
             taskfilter_args += list(preset.PresetHeader.from_line(self.line_number, self.cache).taskfilter)
-        taskfilter_args += "("
+        # taskfilter_args += "("
         taskfilter_args += util.tw_modstring_to_args(filterstring)
-        taskfilter_args += ")"
+        # taskfilter_args += ")"
 
         # Process syntactic sugar: Context expansion
         detected_contexts = []
