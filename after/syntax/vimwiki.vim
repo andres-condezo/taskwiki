@@ -31,6 +31,8 @@ syntax cluster TaskWikiTaskContains
 " Conceal the UUID
 execute 'syn match TaskWikiTaskUuid containedin=TaskWikiTask /\v#([A-Z]:)?[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/'.s:conceal
 execute 'syn match TaskWikiTaskUuid containedin=TaskWikiTask /\v#([A-Z]:)?[0-9a-fA-F]{8}$/'.s:conceal
+
+execute 'syn match TaskWikiTaskUuid containedin=TaskWikiTask /\v\(\d{4}-\d{2}-\d{2} \d{2}:\d{2}\)/'.s:conceal
 highlight link TaskWikiTaskUuid Comment
 
 " Conceal header definitions
@@ -42,6 +44,9 @@ endfor
 " Will be colored dynamically by Meta().source_tw_colors()
 syntax match TaskWikiTaskActive containedin=TaskWikiTask contained contains=@TaskWikiTaskContains /\s*\*\s\[S\]\s[^#]*/
 syntax match TaskWikiTaskCompleted containedin=TaskWikiTask contained contains=@TaskWikiTaskContains /\s*\*\s\[X\]\s[^#]*/
+syntax match TaskWikiTaskCompleted containedin=TaskWikiTask contained contains=@TaskWikiTaskContains /\u{2705}\s*[^#]*/
+" syntax match TaskWikiTaskCompleted containedin=TaskWikiTask contained contains=@TaskWikiTaskContains /\%u2705\s[^#]*/
+" syntax match TaskWikiTaskCompleted containedin=TaskWikiTask contained contains=@TaskWikiTaskContains /\%u2705/
 syntax match TaskWikiTaskDeleted containedin=TaskWikiTask contained contains=@TaskWikiTaskContains /\s*\*\s*\[D\]\s[^#]*/
 syntax match TaskWikiTaskRecurring containedin=TaskWikiTask contained contains=@TaskWikiTaskContains /\s*\*\s\[R\]\s[^#]*/
 syntax match TaskWikiTaskWaiting containedin=TaskWikiTask contained contains=@TaskWikiTaskContains /\s*\*\s\[W\]\s[^#]*/
